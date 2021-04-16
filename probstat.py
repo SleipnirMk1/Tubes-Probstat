@@ -194,3 +194,41 @@ df.plot.scatter("Kelas", "Ransum")
 print("Korelasi negatif sangat kuat (0.8-1.0)")
 df["Kelas"].corr(df["Ransum"])
 
+#Tes Hipotesis 1 sampel
+#a
+print("Tes Hipotesis 1 Sampel")
+print("4.a: Nilai rata-rata Daerah di atas 4700?")
+print("h0: rata-rata = 4700")
+print("h1: rata-rata > 4700")
+val_list = df["Daerah"].values.tolist()
+tset, pval = stats.ttest_1samp(val_list, 4700)
+print("Nilai P: ", pval)
+if pval < 0.10:    # tes yang diperlukan one-tailed, sementara fungsi menghitung two-ended, sehingga Z daerah kritis perlu 2x lipat
+   print("Hipotesis null tidak diterima, sehingga rata-rata diatas 4700")
+else:
+  print("Hipotesis null diterima, sehingga rata-rata 4700")
+
+#b
+print("4.b: Nilai Rata-rata Sumbu Utama tidak sama dengan 116?")
+print("h0: rata-rata = 116")
+print("h1: rata-rata =/= 116")
+val_list = df["SumbuUtama"].values.tolist()
+tset, pval = stats.ttest_1samp(val_list, 116)
+print("Nilai P: ", pval)
+if pval < 0.05:
+   print("Hipotesis null tidak diterima, sehingga rata-rata bukan 116")
+else:
+  print("Hipotesis null diterima, sehingga rata-rata 116")
+
+#c
+print("4c. Nilai Rata-rata 20 baris pertama kolom Sumbu Kecil bukan 50?")
+print("h0: rata-rata = 50")
+print("h1: rata-rata =/= 50")
+val_list = df["SumbuKecil"].head(20).values.tolist()
+tset, pval = stats.ttest_1samp(val_list, 50)
+print("Nilai P: ", pval)
+if pval < 0.05:
+   print("Hipotesis null tidak diterima, sehingga rata-rata bukan 50")
+else:
+  print("Hipotesis null diterima, sehingga rata-rata 50")
+
