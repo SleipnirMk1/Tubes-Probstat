@@ -299,22 +299,26 @@ print("4.a: Nilai rata-rata Daerah di atas 4700?")
 print("h0: rata-rata = 4700")
 print("h1: rata-rata > 4700")
 print("alpha = 0.05")
-print("Tes yang digunakan: One-Sample T-Test, karena data berdistribusi normal")
+print("Tes yang digunakan: One-Tailed Normal test")
+print("Daerah kritis: Z > 1.645")
 val_list = df["Daerah"].values.tolist()
 tset, pval = stats.ttest_1samp(val_list, 4700)
 print("Nilai P: ", pval)
-# tes yang diperlukan one-tailed, sementara fungsi menghitung two-tailed, sehingga tingkat signifikansi daerah kritis perlu 2x lipat
-if pval < 0.10:    
+# tes yang diperlukan one-tailed, sementara fungsi menghitung two-ended, sehingga P daerah kritis perlu 2x lipat
+# note: keberadaan tail kedua dinilai tidak memengaruhi hasil
+if pval < 0.10: 
    print("P lebih kecil dari alpha, Hipotesis null tidak diterima, sehingga rata-rata diatas 4700")
 else:
   print("P lebih besar dari alpha, Hipotesis null diterima, sehingga rata-rata 4700")
+df.boxplot(column="Daerah")
 
 #b
 print("4.b: Nilai Rata-rata Sumbu Utama tidak sama dengan 116?")
 print("h0: rata-rata = 116")
 print("h1: rata-rata =/= 116")
 print("alpha = 0.05")
-print("Tes yang digunakan: One-Sample T-Test, karena data berdistribusi normal")
+print("Tes yang digunakan: Two-Tailed Normal test")
+print("Daerah kritis: Z > 1.96 atau Z < -1.96")
 val_list = df["SumbuUtama"].values.tolist()
 tset, pval = stats.ttest_1samp(val_list, 116)
 print("Nilai P: ", pval)
@@ -322,13 +326,15 @@ if pval < 0.05:
    print("P lebih kecil dari alpha, Hipotesis null tidak diterima, sehingga rata-rata bukan 116")
 else:
   print("P lebih besar dari alpha, Hipotesis null diterima, sehingga rata-rata 116")
+df.boxplot(column="SumbuUtama")
 
 #c
 print("4c. Nilai Rata-rata 20 baris pertama kolom Sumbu Kecil bukan 50?")
 print("h0: rata-rata = 50")
 print("h1: rata-rata =/= 50")
 print("alpha = 0.05")
-print("Tes yang digunakan: One-Sample T-Test, karena data berdistribusi normal")
+print("Tes yang digunakan: Two-Tailed Normal test")
+print("Daerah kritis: Z > 1.96 atau Z < -1.96")
 val_list = df["SumbuKecil"].head(20).values.tolist()
 tset, pval = stats.ttest_1samp(val_list, 50)
 print("Nilai P: ", pval)
@@ -336,4 +342,5 @@ if pval < 0.05:
    print("P lebih kecil dari alpha, Hipotesis null tidak diterima, sehingga rata-rata bukan 50")
 else:
   print("P lebih besar dari alpha, Hipotesis null diterima, sehingga rata-rata 50")
+df.boxplot(column="SumbuKecil")
 
