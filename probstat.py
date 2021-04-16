@@ -11,6 +11,7 @@ import math
 
 print("Anggota: ")
 print("Ilyasa Salafi Putra Jamal 13519023")
+print("Mahameru Ds 13519014")
 
 df = pd.read_csv("Gandum.csv")
 
