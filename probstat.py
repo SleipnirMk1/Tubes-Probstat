@@ -344,3 +344,74 @@ else:
   print("P lebih besar dari alpha, Hipotesis null diterima, sehingga rata-rata 50")
 df.boxplot(column="SumbuKecil")
 
+# 5.a
+df_length = int(len(df)/2)
+sample1 = df[df_length:]["AreaBulatan"]
+sample2 = df[:df_length]["AreaBulatan"]
+print("1. h0 : meanSample1 = meanSample2")
+print("2. h1 : meanSample1 =/= meanSample2")
+print("3. alpha = 0.5")
+print("4.")
+ttest,pval = stats.ttest_ind(sample1, sample2);
+print("5. Nilai P: ", pval)
+if pval < 0.05:
+   print("6. P lebih kecil dari alpha, Hipotesis null tidak diterima, sehingga rata-rata kedua bagian tidak sama")
+else:
+  print("6. P lebih besar dari alpha, Hipotesis null diterima, sehingga rata-rata kedua bagian tidak sama")
+
+#5.b
+df_length = int(len(df)/2)
+sample1 = df[df_length:]["KadarAir"]
+sample2 = df[:df_length]["KadarAir"]
+print("1. h0 : meanSample1-meanSample2 = 2")
+print("2. h1 : meanSample1-meanSample2 > 2")
+print("3. alpha = 0.5")
+print("4.")
+ttest,pval = stats.ttest_ind(sample1, sample2);
+print("5. Nilai P: ", pval)
+if pval < 0.05:
+   print("6. P lebih kecil dari alpha, Hipotesis null tidak diterima, sehingga perbedaan rata-rata kedua bagian sama dengan dua")
+else:
+  print("6. P lebih besar dari alpha, Hipotesis null diterima, sehingga perbedaan rata-rata kedua bagian tidak sama dengan dua")
+
+# 5.c
+sample1 = df[:20]["Bulatan"]
+sample2 = df[-20:]["Bulatan"]
+print("1. h0 : meanSample1 = meanSample2")
+print("2. h1 : meanSample1 =/= meanSample2")
+print("3. alpha = 0.5")
+print("4.")
+ttest,pval = stats.ttest_ind(sample1, sample2);
+print("5. Nilai P: ", pval)
+if pval < 0.05:
+   print("6. P lebih kecil dari alpha, Hipotesis null tidak diterima, sehingga rata-rata kedua bagian tidak sama")
+else:
+  print("6. P lebih besar dari alpha, Hipotesis null diterima, sehingga rata-rata kedua bagian sama")
+
+#5.d
+data = df[df.Ransum > 2]["Ransum"]
+data_length = int(len(data)/2)
+sample1 = data[df_length:]
+sample2 = data[:df_length];
+print("1. h0 : meanSample1 = meanSample2")
+print("2. h1 : meanSample1 > meanSample2")
+print("3. alpha = 0.5")
+print("4.")
+ttest,pval = stats.ttest_ind(sample1, sample2)
+print("5. Nilai P: ", pval)
+if pval < 0.05:
+   print("6. P lebih kecil dari alpha, Hipotesis null tidak diterima, sehingga rata-rata kedua bagian tidak sama")
+else:
+  print("6. P lebih besar dari alpha, Hipotesis null diterima, sehingga rata-rata kedua bagian tidak sama")
+
+#5.e
+sample1 = df[df_length:]["Diameter"]
+sample2 = df[:df_length]["Diameter"];
+ttest,pval = stats.ttest_ind(sample1, sample2)
+print("Mean Sample 1 : ", np.mean(sample1));
+print("Mean Sample 2 : ", np.mean(sample2));
+print("Nilai P: ", pval)
+if pval < 0.05:
+   print("P lebih kecil dari alpha, Hipotesis null tidak diterima, sehingga rata-rata kedua bagian tidak sama")
+else:
+  print("P lebih besar dari alpha, Hipotesis null diterima, sehingga rata-rata kedua bagian tidak sama")
