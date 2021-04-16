@@ -63,7 +63,16 @@ df.boxplot(column="Daerah")
 print("Pengujian distribusi normal dengan normality test Quartile-Quartile plot: ")
 stats.probplot(df["Daerah"], dist="norm", plot=pylab)
 pylab.show()
-print("Kesimpulan: Berdistribusi normal")
+print("Kesimpulan: Gagal menolak, perlu dilakukan tes Shapiro-Wilk")
+
+print("Pengujian normal dengan tes Shapiro-Wilk")
+val_list = df["Daerah"].values.tolist()
+tset, pval = stats.shapiro(val_list)
+print("Pval: ", pval)
+if pval > 0.05:
+    print("Pval lebih besar dari 0.05, Kesimpulan: Berdistribusi normal")
+else:
+    print("Pval lebih kecil dari 0.05, Kesimpulan: Tidak berdistribusi normal") #Ans
 
 #Sumbu Utama
 df.hist(column="SumbuUtama")
@@ -73,7 +82,16 @@ df.boxplot(column="SumbuUtama")
 print("Pengujian distribusi normal dengan normality test Quartile-Quartile plot: ")
 stats.probplot(df["SumbuUtama"], dist="norm", plot=pylab)
 pylab.show()
-print("Kesimpulan: Berdistribusi normal, dengan outlier")
+print("Kesimpulan: Gagal menolak, perlu dilakukan tes Shapiro-Wilk")
+
+print("Pengujian normal dengan tes Shapiro-Wilk")
+val_list = df["SumbuUtama"].values.tolist()
+tset, pval = stats.shapiro(val_list)
+print("Pval: ", pval)
+if pval > 0.05:
+    print("Pval lebih besar dari 0.05, Kesimpulan: Berdistribusi normal")
+else:
+    print("Pval lebih kecil dari 0.05, Kesimpulan: Tidak berdistribusi normal")#Ans
 
 #Sumbu Kecil
 df.hist(column="SumbuKecil")
@@ -83,7 +101,16 @@ df.boxplot(column="SumbuKecil")
 print("Pengujian distribusi normal dengan normality test Quartile-Quartile plot: ")
 stats.probplot(df["SumbuKecil"], dist="norm", plot=pylab)
 pylab.show()
-print("Kesimpulan: Berdistribusi normal")
+print("Kesimpulan: Gagal menolak, perlu dilakukan tes Shapiro-Wilk")
+
+print("Pengujian normal dengan tes Shapiro-Wilk")
+val_list = df["SumbuKecil"].values.tolist()
+tset, pval = stats.shapiro(val_list)
+print("Pval: ", pval)
+if pval > 0.05:
+    print("Pval lebih besar dari 0.05, Kesimpulan: Berdistribusi normal") #Ans
+else:
+    print("Pval lebih kecil dari 0.05, Kesimpulan: Tidak berdistribusi normal")
 
 #Keunikan
 df.hist(column="Keunikan")
@@ -103,7 +130,16 @@ df.boxplot(column="AreaBulatan")
 print("Pengujian distribusi normal dengan normality test Quartile-Quartile plot: ")
 stats.probplot(df["AreaBulatan"], dist="norm", plot=pylab)
 pylab.show()
-print("Kesimpulan: Berdistribusi normal")
+print("Kesimpulan: Gagal menolak, perlu dilakukan tes Shapiro-Wilk")
+
+print("Pengujian normal dengan tes Shapiro-Wilk")
+val_list = df["AreaBulatan"].values.tolist()
+tset, pval = stats.shapiro(val_list)
+print("Pval: ", pval)
+if pval > 0.05:
+    print("Pval lebih besar dari 0.05, Kesimpulan: Berdistribusi normal")
+else:
+    print("Pval lebih kecil dari 0.05, Kesimpulan: Tidak berdistribusi normal") #Ans
 
 #Diameter
 df.hist(column="Diameter")
@@ -113,7 +149,16 @@ df.boxplot(column="Diameter")
 print("Pengujian distribusi normal dengan normality test Quartile-Quartile plot: ")
 stats.probplot(df["Diameter"], dist="norm", plot=pylab)
 pylab.show()
-print("Kesimpulan: Berdistribusi normal")
+print("Kesimpulan: Gagal menolak, perlu dilakukan tes Shapiro-Wilk")
+
+print("Pengujian normal dengan tes Shapiro-Wilk")
+val_list = df["Diameter"].values.tolist()
+tset, pval = stats.shapiro(val_list)
+print("Pval: ", pval)
+if pval > 0.05:
+    print("Pval lebih besar dari 0.05, Kesimpulan: Berdistribusi normal") #Ans
+else:
+    print("Pval lebih kecil dari 0.05, Kesimpulan: Tidak berdistribusi normal")
 
 #Kadar Air
 df.hist(column="KadarAir")
@@ -133,7 +178,16 @@ df.boxplot(column="Keliling")
 print("Pengujian distribusi normal dengan normality test Quartile-Quartile plot: ")
 stats.probplot(df["Keliling"], dist="norm", plot=pylab)
 pylab.show()
-print("Kesimpulan: Berdistribusi normal, dengan outlier")
+print("Kesimpulan: Gagal menolak, perlu dilakukan tes Shapiro-Wilk")
+
+print("Pengujian normal dengan tes Shapiro-Wilk")
+val_list = df["Keliling"].values.tolist()
+tset, pval = stats.shapiro(val_list)
+print("Pval: ", pval)
+if pval > 0.05:
+    print("Pval lebih besar dari 0.05, Kesimpulan: Berdistribusi normal") 
+else:
+    print("Pval lebih kecil dari 0.05, Kesimpulan: Tidak berdistribusi normal") #Ans
 
 #Bulatan
 df.hist(column="Bulatan")
@@ -143,7 +197,16 @@ df.boxplot(column="Bulatan")
 print("Pengujian distribusi normal dengan normality test Quartile-Quartile plot: ")
 stats.probplot(df["Bulatan"], dist="norm", plot=pylab)
 pylab.show()
-print("Kesimpulan: Berdistribusi normal, dengan outlier")
+print("Kesimpulan: Gagal menolak, perlu dilakukan tes Shapiro-Wilk")
+
+print("Pengujian normal dengan tes Shapiro-Wilk")
+val_list = df["Bulatan"].values.tolist()
+tset, pval = stats.shapiro(val_list)
+print("Pval: ", pval)
+if pval > 0.05:
+    print("Pval lebih besar dari 0.05, Kesimpulan: Berdistribusi normal") 
+else:
+    print("Pval lebih kecil dari 0.05, Kesimpulan: Tidak berdistribusi normal")#Ans
 
 #Ransum
 df.hist(column="Ransum")
@@ -240,7 +303,8 @@ print("Tes yang digunakan: One-Sample T-Test, karena data berdistribusi normal")
 val_list = df["Daerah"].values.tolist()
 tset, pval = stats.ttest_1samp(val_list, 4700)
 print("Nilai P: ", pval)
-if pval < 0.10:    # tes yang diperlukan one-tailed, sementara fungsi menghitung two-ended, sehingga Z daerah kritis perlu 2x lipat
+# tes yang diperlukan one-tailed, sementara fungsi menghitung two-tailed, sehingga tingkat signifikansi daerah kritis perlu 2x lipat
+if pval < 0.10:    
    print("P lebih kecil dari alpha, Hipotesis null tidak diterima, sehingga rata-rata diatas 4700")
 else:
   print("P lebih besar dari alpha, Hipotesis null diterima, sehingga rata-rata 4700")
